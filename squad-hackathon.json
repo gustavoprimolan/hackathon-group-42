@@ -1,0 +1,62 @@
+{
+    "id": "hackathon-squad",
+    "name": "hackathon-squad",
+    "category": "product",
+    "jiraKey": "MMRP",
+    "fleet": "hackathon-fleet",
+    "manager": "boss@bitso.com",
+    "ownRepos": [],
+    "services": [
+        "service-1",
+        "service-2",
+        "service-3",
+        "service-4",
+        "service-5",
+        "service-6",
+        "service-7",
+        "service-8"
+    ],
+    "people": [
+        {
+            "fullName": "Freddie Mercury",
+            "id": "freddie.mercury@rockstar.com"
+        },
+        {
+            "fullName": "Joan Jett",
+            "id": "joan.jett@rockstar.com"
+        },
+        {
+            "fullName": "David Bowie",
+            "id": "david.bowie@rockstar.com"
+        },
+        {
+            "fullName": "Stevie Nicks",
+            "id": "stevie.nicks@rockstar.com"
+        },
+        {
+            "fullName": "Mick Jagger",
+            "id": "mick.jagger@rockstar.com"
+        },
+        {
+            "fullName": "Debbie Harry",
+            "id": "debbie.harry@rockstar.com"
+        },
+        {
+            "fullName": "Robert Plant",
+            "id": "robert.plant@rockstar.com"
+        },
+        {
+            "fullName": "Janis Joplin",
+            "id": "janis.joplin@rockstar.com"
+        }
+    ],
+    "description": "We delight our customers by providing reliable, scalable, secure and frictionless ramps while reducing time-to-market.",
+    "slack": {
+        "id": "@money_movement-hackathon",
+        "channel": "squad-operations-hackathon"
+    },
+    "alerts": {
+        "schedule": "0 9 * * *",
+        "channel": "alerts-hackathon"
+    }
+}
