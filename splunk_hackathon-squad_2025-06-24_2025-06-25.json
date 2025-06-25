@@ -2609,5 +2609,29 @@
     "batch_id": "USER-BATCH-001",
     "reason": "Duplicate email address 'existing@example.com'.",
     "stack_trace": "java.sql.SQLIntegrityConstraintViolationException: Duplicate entry 'existing@example.com' for key 'users.email_UNIQUE'\n\tat com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)\n\t..."
+  },
+  {
+    "timestamp": "2025-06-26T19:21:50.900+03:00",
+    "service_name": "hackathon-squad",
+    "programming_language": "Java",
+    "process_id": 12377,
+    "log_level": "WARN",
+    "thread_name": "sms-sender",
+    "logger_name": "com.example.app.integrations.SmsSlackNotification",
+    "message": "Error to send SMS notification to user 'U001'. Retrying in 5 seconds.",
+    "user_id": "U001"
+  },
+  {
+    "timestamp": "2025-06-26T19:21:52.000+03:00",
+    "service_name": "hackathon-squad",
+    "programming_language": "Java",
+    "process_id": 12398,
+    "log_level": "ERROR",
+    "thread_name": "sms-sender",
+    "logger_name": "com.example.app.integrations.SmsSlackNotification",
+    "message": "Sending notification to user 'U001' failed after 3 retries.",
+    "error_type": "org.springframework.security.core.AuthenticationException",
+    "reason": "The access token is expired.",
+    "stack_trace": "org.springframework.security.core.AuthenticationException: The access token is expired.\n\tat com.example.app.integrations.SmsSlackNotification.sendNotification(SmsSlackNotification.java:45)\n\t..."
   }
 ]
