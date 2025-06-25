@@ -1,0 +1,161 @@
+## Top troubleshooting
+
+### SMS OTP
+Issue: The user wasn't receiving the SMS with the OTP code; it only arrived when they selected the "send again" option. However, when they tried again, the app indicated that the time to attempt to validate the code had expired and returned them to the main screen.
+Solution: It seems that the user no longer complained about this or at least there was no follow-up, but everything seemed to indicate that the user had a poor signal to receive the OTP SMS and also, it took they a long time to enter the second attempt since the attempt is only valid in the first 5 minutes, if you try to carry out any validation after that, the application redirects you to the main screen. Another possible solution is to try rebooting the device to improve the signal.
+Customer support & Engineering team chat: 
+Zendesk
+APP  Jun 11th at 8:50 AM
+Agent in Ticket #xxxxx:
+CS escalation - Technical Issue
+- User ID:
+XXXXX
+- Issue Description:
+-User is having trouble receiving the SMS.
+-User says: "The first SMS request is never received.   After the time-out, the second requested SMS is almost immediately received, but when the code is entered, the system sends me straight back to the login page!   This is very disturbing because I cannot  withdraw  my money!  There is also a popup message saying, 'SMS is properly sent' .... Which cannot be the case, because only the second SMS message is received.  
+Please look into a possible bug in my account?Thank youTimothy"
+ 
+- Technical info:
+Please, take a look at the thread for relevant info.
+
+Engineer
+Jun 11th at 10:12 AM
+Hi, I see all SMS attempts were marked as delivered in Twilio, either from the primary and secondary channel in the OTP. I understand from what the user said seems there are 2 problems:
+He's not receiving the first SMS every time he tries, just the second one after waiting 2 minutes
+Once he enter the code, there's a kind of issue that the user is being returned to the initial page in the login?
+Could you help me confirm? I saw some events where he successfully verified the OTP, I understand in those cases he faced the second problem, is it right? (edited) 
+10:15
+Regarding 1. I checked Twilio's console and all attempts were marked as delivered in both channels. For some reason he might be not receiving it or having a dealy, do you know if has strong signal? Did the user tried restarting the phone?
+
+Issue: The user was unable to receive the OTP SMS, even after trying to turn off the device, put it in airplane mode, etc.
+Solution: For this case, we were able to confirm that it was an issue with the user and their service provider after checking our dashboards and escalating a ticket with our provider, since everything seemed to be in order. We asked the user to contact their provider.
+Customer support & Engineering team chat: 
+Zendesk
+APP  May 13th at 4:48 PM
+Agent in Ticket #xxxxx:
+CS escalation - Technical Issue
+- User ID:
+XXXXX
+- Issue Description:
+User does not receive SMS for password reset. +52xxxxx
+He answered all the questions and did all the workarounds without success. 
+ 
+- Technical info:
+Could you please help us to see if there is any issues in your logs?
+
+Engineer 1
+May 13th at 5:06 PM
+@Engineer2 no errors here, could you check in Twilio console?
+in order to unblock the user you can, remove the phone number then he could enable the 2fa. after that you can add the phone number again
+
+Engineer 2
+May 13th at 5:27 PM
+Sure, I'm taking a look. There are not errors as well, I'll need to escalate it with Twilio, All attempts are marked as delivered
+
+Engineer 1
+May 13th at 5:31 PM
+sad
+
+Engineer 2
+May 13th at 5:43 PM
+I created the ticket
+
+Engineer 2
+May 15th at 12:14 PM
+Hi @Agent, here Twilio answered and they recommended that the user contact its provider to understand where can be the problem. Could you follow up with the user?
+
+Agent
+May 15th at 12:52 PM
+Yes, I will tell the user to contact his provider. Thank you Engineer 1
+
+Issue: The user couldn't receive the OTP SMS because our services indicated that their city (or at least the country code of their phone number) was not supported.
+Solution: There was no resolution because the user was using a phone number not supported by our service provider (the phone number is from Indonesia). A possible solution for the user was to ask them to update their phone number to one supported by our service provider, and agents were provided with visibility into the list of supported countries.
+Customer support & Engineering team chat: 
+Zendesk
+APP  May 6th at 6:47 AM
+Agent1 in Ticket #XXXXX:
+CS escalation - Technical Issue
+- *User ID: xxxxx
+- *Issue Description: *User's unable to receive the SMS OTP code because the system says "Country of phone number is unsupported!". Checking our files, Indonesia doesn't seem to be an unsupported country. Issue seems to have started this month
+ 
+- *Technical info: *Phone number is +62xxxxx
+
+Engineer 1
+May 6th at 7:26 AM
+@Engineer2 may this one case where the user needs to change his phone number due to restrictions?
+
+Engineer 2
+May 6th at 8:50 AM
+Hi @Engineer1, I checked in Twilio's console and this country is disabled, that means the error message is receiving is correct. Changing the phone number can be an option as you mentioned.
+
+@Agent1 what does the user is trying to accomplish? Also I checked the user ID you provided but looks like might be another user? (The phone number in that account is different)
+
+
+Agent 1
+May 6th at 8:58 AM
+Sorry Engineer2, the real ID is xxxxx, the other one is the ticket (my bad). They're trying to get their OTP code to log in. Do we have an updated list of blocked countries?
+
+
+Engineer 2
+May 6th at 10:15 AM
+I took a look but I see the user has 2FA enabled and there are some attempts for Reset PIN, might be the problem is that wants to change his PIN? Can we confirm if that's the case and if user wants to withdraw money?
+For withdrawal a workaround could be log in into mobile app and trying the withdrawal there, as for mobile withdrawal work differently and will request Mobile PIN instead of Transactional PIN.
+
+Regarding the updated list, I'll try to share it EOD @Agent as I'll create another one that can be shared
+
+Agent 1
+May 6th at 10:39 AM
+I'll check with the workaround, thx!
+
+Agent 2
+May 7th at 2:07 PM
+Hi Engineer 2! The user understood our response but he is asking about if we have APK installation for Bitso mobile application? Because he tried to find in playstore his country didn’t have, so can you confirm if we can help with this to the user? I understand that no, because if there is also an update, he should also do it manually, correct?
+
+Engineer 2
+May 7th at 2:23 PM
+Hi Agent 2! yes we don't provide APKs or the app in a different place than the official stores as also it will be a bad practice to share with our customers in terms of security and for the reason you mentioned. If the customer can't download the app because in his country isn't available in the store still can use our web version.
+
+Agent 2
+May 7th at 2:31 PM
+Thank you Engineer 2!
+
+Engineer 2
+May 7th at 3:28 PM
+@Agent1 just sharing in this spreadsheet the list of the countries that are being blocked in Twilio (Blocked countries with geo permissions tab)
+
+Agent 1
+May 8th at 8:32 AM
+Thank you so much! This is very useful
+
+### Login issues
+Issue: The user attempted to authorize the login but was doing so on a different device (with a different IP address). The user was logging in on their mobile device and then opening the email to authorize the login on their computer.
+Solution: Require the user to access and open the email from the same device.
+Customer support & Engineering team chat: 
+Zendesk
+APP  Jun 16th at 10:22 AM
+Agent in Ticket #XXXXX:
+CS escalation - Technical Issue
+- User ID: xxxxx
+- *Issue Description: *Hello team, this user is unable to authorize their device because the system states that "IP xxxxx:xxxxx:xxxxx:xxxxx:xxxxx Does not match yyyyy:yyyyy:yyyyy:yyyyy:yyyyy, Please disable any privacy or VPN service and try again". The user, however, states that they don't have any privacy or VPN services active, and their IP looks fine. The issue seems to be concentrated on their Windows device, is there anything you could check on your side to confirm what is going on? Thank you!
+ 
+- *Technical info: *Chrome 137.0.0 - Windows 10
+
+Zendesk
+APP  Jun 16th at 10:22 AM
+
+Engineer 1
+Jun 16th at 10:28 AM
+Hello @Agent!, can we confirm the user is completing the login process in the same device? seems like he is trying to login in their mobile and authorize through a windows device
+
+Agent
+Jun 16th at 10:58 AM
+@Engineer1 that seems to have done the trick lol thank you. can you please tell me how you found out he was issuing the device authorization from another device? it doesn't show on our events and it might be useful for the future. thanks!
+
+Engineer 1
+Jun 16th at 11:01 AM
+it was through the events, in the user agent column showed the switch between devices
+
+Agent
+Jun 16th at 11:07 AM
+Ohhh! Since there's no event for the sending of the device authorization, I didn't think of looking into that. Good finding!!
+
